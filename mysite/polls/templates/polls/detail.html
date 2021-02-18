@@ -6,10 +6,30 @@
 </head>
 <body>
     <h1>{{ question.question_text }}</h1>
+    {% if error_message %} 
+        <p><strong>{{ error_message }}</strong></p>
+    {% endif %}
+    <p></p>
+    <p>增加了template脚本，处理选择项，和post请求的响应url</p>
+    <form action="{% url 'polls:vote' question.id %}" method="post">
+        {% csrf_token %}
+        {% for choice in question.choice_set.all %}
+            <input type="radio"  name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}">
+            <label for="choice{{ forloop.counter }}">{{ choice.choice_text }} </label><br>
+        {% endfor %}
+        <input type="submit" value="Vote">
+    </form>
+    <p>可以在template里查询数据库内的所有选择项</p>
     <ul>
         {% for choice in question.choice_set.all %}
             <li>{{ choice.choice_text }}</li>
         {% endfor %}
     </ul>
+    <p>原始的html表单</p>
+    <form>
+        <input type="radio" name="choice1" value="choice1">
+        <label for="choice1">choice1</label><br>
+        <input type="submit" value="Vote">
+    </form>
 </body>
 </html>
