@@ -6,4 +6,4 @@ from django.http import HttpResponse
 
 
 def index(request):
-    return HttpResponse("hello django")
+    return HttpResponse("hello django from github")
