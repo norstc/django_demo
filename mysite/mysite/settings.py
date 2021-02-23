@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'polls.apps.PollsConfig',
     'hello.apps.HelloConfig',
-    'greet.apps.GreetConfig'
+    'greet.apps.GreetConfig',
+    'newyear.apps.NewyearConfig'
 ]
 
 MIDDLEWARE = [
